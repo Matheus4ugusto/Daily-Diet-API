@@ -15,7 +15,7 @@ export async function usersRoutes(app: FastifyInstance) {
 
         const {email, password, name} = createUserBodySchema.parse(request.body);
 
-        let authorizationToken = request.cookies.authorizationToken
+        let {authorizationToken} = request.cookies
 
         if (!authorizationToken) {
             authorizationToken = randomUUID()
@@ -117,7 +117,7 @@ export async function usersRoutes(app: FastifyInstance) {
         await knex('users').where({email, password}).first().update({
             authorization_token: authorizationToken
         }).then(() => {
-            reply.setCookie("authorizationToken", authorizationToken).status(200).send()
+            reply.cookie("authorizationToken", authorizationToken, {path: '/',}).status(200).send()
         })
 
     })
