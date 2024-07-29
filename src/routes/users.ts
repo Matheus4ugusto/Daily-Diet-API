@@ -115,6 +115,12 @@ export async function usersRoutes(app: FastifyInstance) {
 
         const authorizationToken = randomUUID()
 
+        const user = knex('users').where({email, password}).first()
+
+        if (!user) {
+            return reply.status(401).send()
+        }
+
         await knex('users').where({email, password}).first().update({
             authorization_token: authorizationToken
         }).then(() => {

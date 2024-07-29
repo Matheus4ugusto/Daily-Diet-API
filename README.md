@@ -93,7 +93,7 @@
     ```
 * **Respostas:**
     * **200 OK:** Login bem-sucedido. Um cookie `authorizationToken` é definido com um novo token.
-    * **401 Unauthorized:** Se as credenciais forem inválidas.
+    * **401 Unauthorized:** Se as credenciais forem inválidas (usuário não encontrado ou senha incorreta).
 
 ### 6. Logout
 
@@ -117,7 +117,7 @@ todas as requisições.
 
 ---
 
-#### 1. Criar Refeição
+### 1. Criar Refeição
 
 * **Método:** POST
 * **Rota:** `/`
@@ -136,7 +136,7 @@ todas as requisições.
     * **201 Created:** Refeição criada com sucesso (sem corpo na resposta).
     * **403 Forbidden:** Se o usuário não estiver autenticado.
 
-#### 2. Listar Refeições
+### 2. Listar Refeições
 
 * **Método:** GET
 * **Rota:** `/`
@@ -162,7 +162,7 @@ todas as requisições.
     * **403 Forbidden:** Se o usuário não estiver autenticado.
     * **404 Not Found:** Se o usuário não tiver nenhuma refeição cadastrada.
 
-#### 3. Obter Refeição por ID
+### 3. Obter Refeição por ID
 
 * **Método:** GET
 * **Rota:** `/:mealId`
@@ -187,7 +187,7 @@ todas as requisições.
     * **403 Forbidden:** Se o usuário não estiver autenticado.
     * **404 Not Found:** Se a refeição não for encontrada.
 
-#### 4. Atualizar Refeição
+### 4. Atualizar Refeição
 
 * **Método:** PUT
 * **Rota:** `/:mealId`
@@ -214,7 +214,7 @@ todas as requisições.
     * **403 Forbidden:** Se o usuário não estiver autenticado.
     * **404 Not Found:** Se a refeição não for encontrada.
 
-#### 5. Deletar Refeição
+### 5. Deletar Refeição
 
 * **Método:** DELETE
 * **Rota:** `/:mealId`
