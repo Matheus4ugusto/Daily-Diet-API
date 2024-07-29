@@ -47,6 +47,7 @@ export async function usersRoutes(app: FastifyInstance) {
         }).first()
 
         delete user.password
+        delete user.authorization_token
 
         return reply.status(200).send({user})
     })

@@ -37,8 +37,7 @@
           "user": {
             "id": "uuid",
             "email": "usuario@email.com",
-            "name": "Nome do Usuário",
-            "authorization_token": "token_de_autorizacao"
+            "name": "Nome do Usuário"
           }
         }
         ```
