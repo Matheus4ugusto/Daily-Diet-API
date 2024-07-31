@@ -46,6 +46,10 @@ export async function usersRoutes(app: FastifyInstance) {
             authorization_token: authorizationToken
         }).first()
 
+        if (!user) {
+            reply.status(404).send()
+        }
+
         delete user.password
         delete user.authorization_token
 

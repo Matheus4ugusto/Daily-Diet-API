@@ -1,7 +1,11 @@
 import {z} from "zod";
 import {config} from "dotenv";
 
-config()
+if (process.env.NODE_ENV === "test") {
+    config({path: '.env.tests'})
+} else {
+    config()
+}
 
 const envSchema = z.object({
     NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
@@ -13,7 +17,7 @@ const envSchema = z.object({
 
 const _env = envSchema.safeParse(process.env)
 
-if(_env.success === false){
+if (_env.success === false) {
     console.error('Invalid environment variables', _env.error.format());
     throw new Error(`Invalid environment variables: ${_env.error.format()}`)
 }
