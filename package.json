@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsup src --out-dir build"
   },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
@@ -23,6 +24,7 @@
     "@types/supertest": "^6.0.2",
     "sqlite3": "^5.1.7",
     "supertest": "^7.0.0",
+    "tsup": "^8.2.3",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
     "vitest": "^2.0.4"
