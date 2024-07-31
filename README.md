@@ -226,4 +226,37 @@ todas as requisições.
 * **Respostas:**
     * **204 No Content:** Refeição deletada com sucesso.
     * **403 Forbidden:** Se o usuário não estiver autenticado.
-    * **404 Not Found:** Se a refeição não for encontrada. 
+    * **404 Not Found:** Se a refeição não for encontrada.
+
+---
+
+## Rotas de Métricas
+
+**Prefixo da Rota:** `/metrics`
+
+**Autenticação:** Todas as rotas de refeições exigem autenticação. O cookie `authorizationToken` deve ser enviado em
+todas as requisições.
+
+### 1. Obter Métricas do Usuário
+
+* **Método:** GET
+* **Rota:** `/`
+* **Descrição:** Retorna as métricas do usuário autenticado, incluindo a quantidade total de refeições, quantidade de
+  refeições dentro e fora da dieta, maior sequência de refeições dentro da dieta e sequência atual.
+* **Headers:**
+    * `Cookie`: `authorizationToken=token_de_autorizacao`
+* **Respostas:**
+    * **200 OK:**
+        ```json
+        {
+            "metrics": {
+                "mealsQuantity": 10, // Quantidade total de refeições
+                "onDietMealsQuantity": 6, // Quantidade de refeições dentro da dieta
+                "outDietMealsQuantity": 4, // Quantidade de refeições fora da dieta
+                "bestSequence": 3, // Maior sequência de refeições dentro da dieta
+                "actualSequence": 2  // Sequência atual de refeições dentro da dieta
+            }
+        }
+        ```
+    * **401 Unauthorized:** Se o usuário não estiver autenticado.
+    * **404 Not Found:** Se o usuário não tiver nenhuma refeição cadastrada. 
